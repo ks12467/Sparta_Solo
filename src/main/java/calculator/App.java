@@ -13,5 +13,9 @@ public class App {
         System.out.print("두 번째 숫자를 입력하시오. : ");
         int num2 = sc.nextInt();
 
+        System.out.print("연산 기호를 입력하시오. : ");
+        char operator = sc.next().charAt(0);
+        
+
     }
 }
