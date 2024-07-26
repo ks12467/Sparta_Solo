@@ -7,7 +7,8 @@ public class App {
     public static void main(String[] args) {
         /*Scanner를 사용하여 입력 값을 받을 수 있음 */
         Scanner sc = new Scanner(System.in);
-
+        int[] results = new int[10];
+        int resultCount = 0;
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하시오. : ");
@@ -43,15 +44,23 @@ public class App {
                     continue;
             }
             System.out.println("결과 : " + result);
+            results[resultCount] = result;
+            resultCount++;
+
             System.out.println("계산을 더 하시겠습니까? (y/n)");
             String str = sc.next();
-            if (str.equals("y")){
+
+            if (str.equals("y")) {
                 System.out.println("계산을 다시 시작합니다.");
-                continue;
-            }else {
+                for (int i= 0; i < results.length; i++){
+                    System.out.println(i + " : " + results[i]);
+                }
+
+            } else {
                 System.out.println("계산을 종료합니다");
                 break;
             }
+
         }
     }
 }
