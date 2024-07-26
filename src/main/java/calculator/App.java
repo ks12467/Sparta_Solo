@@ -26,8 +26,10 @@ public class App {
                 } else {
                     System.out.println("저장된 기록 확인");
                     /* 향상된 for문을 사용해서 저장된 기록을 출력*/
+                    int index = 1;
                     for (int result : results){
-                        System.out.println(result);
+                        System.out.println("[" +index + "] : " + result);
+                        index++;
                     }
                 }
             } else if (str.equals("y")) {
