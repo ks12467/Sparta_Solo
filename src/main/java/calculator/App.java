@@ -44,8 +44,16 @@ public class App {
                     continue;
             }
             System.out.println("결과 : " + result);
-            results[resultCount] = result;
-            resultCount++;
+
+            if(resultCount < results.length){
+                results[resultCount] = result;
+                resultCount++;
+            }else{
+                for(int i = 1; i<results.length; i++){
+                    results[i-1] = results[i];
+                }
+                results[results.length - 1] = result;
+            }
 
             System.out.println("계산을 더 하시겠습니까? (y/n)");
             String str = sc.next();
@@ -55,6 +63,8 @@ public class App {
                 for (int i= 0; i < results.length; i++){
                     System.out.println(i + " : " + results[i]);
                 }
+
+
 
             } else {
                 System.out.println("계산을 종료합니다");
