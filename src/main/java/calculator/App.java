@@ -12,18 +12,23 @@ public class App {
 
 
         while (true) {
+            /* 기록확인 및 계산을 더 할 것인지를 추가함 */
             System.out.println("계산 진행 y / 기록 확인 history");
+            /* 문자를 입력받기 위한 메서드 */
             String str = sc.next();
-
+            /* equeals = 객체간의 값을 비교 */
             if (str.equals("history")) {
+                /* 만약에 results에 저장된 값이 없으면 아래 문장 출력*/
                 if (results.isEmpty()) {
-                    results.toString();
                     System.out.println("기록이 없습니다.");
+                    /*기록이 없으면 처음으로 돌아감 */
                     continue;
                 } else {
-                    results.toString();
                     System.out.println("저장된 기록 확인");
-                    System.out.println(results.toString());
+                    /* 향상된 for문을 사용해서 저장된 기록을 출력*/
+                    for (int result : results){
+                        System.out.println(result);
+                    }
                 }
             } else if (str.equals("y")) {
                 System.out.println("계산을 시작합니다.");
@@ -66,6 +71,7 @@ public class App {
             System.out.println("결과 : " + result);
             results.add(result);
 
+            /*결과 값을 ArrayList에 저장*/
             for (int i = 0; i < results.size(); i++) {
                 System.out.println((i + 1) + " : " + results.get(i));
             }
@@ -76,6 +82,7 @@ public class App {
             if (str.equals("y")) {
                 System.out.println("계산을 다시 시작합니다.");
             } else if (str.equals("remove")) {
+                /* results의 공간비어있지않을때 가장 첫번째의 값을 삭제*/
                 if (!results.isEmpty()) {
                     results.remove(0);
                     System.out.println("가장 오래 된 기록이 삭제되었습니다.");
@@ -89,6 +96,5 @@ public class App {
                 System.out.println("입력한 값이 올바르지 않습니다.");
             }
         }
-
     }
 }
