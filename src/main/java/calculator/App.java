@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -7,10 +8,29 @@ public class App {
     public static void main(String[] args) {
         /*Scanner를 사용하여 입력 값을 받을 수 있음 */
         Scanner sc = new Scanner(System.in);
-        int[] results = new int[10];
-        int resultCount = 0;
+        ArrayList<Integer> results = new ArrayList<>();
+
 
         while (true) {
+            System.out.println("계산 진행 y / 기록 확인 history");
+            String str = sc.next();
+
+            if (str.equals("history")) {
+                if (results.isEmpty()) {
+                    results.toString();
+                    System.out.println("기록이 없습니다.");
+                    continue;
+                } else {
+                    results.toString();
+                    System.out.println("저장된 기록 확인");
+                    System.out.println(results.toString());
+                }
+            } else if (str.equals("y")) {
+                System.out.println("계산을 시작합니다.");
+            } else {
+                System.out.println("입력 값이 올바르지 않습니다.");
+                continue;
+            }
             System.out.print("첫 번째 숫자를 입력하시오. : ");
             int num1 = sc.nextInt();
             System.out.print("두 번째 숫자를 입력하시오. : ");
@@ -44,33 +64,31 @@ public class App {
                     continue;
             }
             System.out.println("결과 : " + result);
+            results.add(result);
 
-            if(resultCount < results.length){
-                results[resultCount] = result;
-                resultCount++;
-            }else{
-                for(int i = 1; i<results.length; i++){
-                    results[i-1] = results[i];
-                }
-                results[results.length - 1] = result;
+            for (int i = 0; i < results.size(); i++) {
+                System.out.println((i + 1) + " : " + results.get(i));
             }
 
-            System.out.println("계산을 더 하시겠습니까? (y/n)");
-            String str = sc.next();
+            System.out.println("계산을 더 하신거나 결과를 삭제하시겠습니까? (y/n/remove)");
+            str = sc.next();
 
             if (str.equals("y")) {
                 System.out.println("계산을 다시 시작합니다.");
-                for (int i= 0; i < results.length; i++){
-                    System.out.println(i + " : " + results[i]);
+            } else if (str.equals("remove")) {
+                if (!results.isEmpty()) {
+                    results.remove(0);
+                    System.out.println("가장 오래 된 기록이 삭제되었습니다.");
+                } else {
+                    System.out.println("가장 오래 된 기록이 없습니다.");
                 }
-
-
-
-            } else {
+            } else if (str.equals("n")) {
                 System.out.println("계산을 종료합니다");
                 break;
+            } else {
+                System.out.println("입력한 값이 올바르지 않습니다.");
             }
-
         }
+
     }
 }
