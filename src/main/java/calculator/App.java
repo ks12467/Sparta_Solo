@@ -34,6 +34,7 @@ public class App {
                     double radius = sc.nextDouble();
                     double area = calc.calculateCircleArea(radius);
                     System.out.println("원의 넓이 = " + area);
+                    continue;
                 }
                 else if (str.equals("y")) {
                     System.out.println("계산을 시작합니다.");
@@ -51,7 +52,7 @@ public class App {
                 char operator = sc.next().charAt(0);
 
                 //Calculator의 calculate() 메서드를 호출합니다.
-                int result = calc.calculate(num1, num2, operator);
+                double result = calc.calculate(num1, num2, operator);
 
                 //예외 클래스 생성하여 오류 발생 시 아래 코드 실행
             } catch (Exception e) {
@@ -66,7 +67,7 @@ public class App {
             if (str.equals("y")) {
                 System.out.println("계산을 다시 시작합니다.");
             } else if (str.equals("remove")) {
-                List<Integer> results = calc.getResults();
+                List<Double> results = calc.getResults();
                 calc.removeResult();
 
             } else if (str.equals("n")) {

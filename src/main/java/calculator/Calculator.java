@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    private List<Integer> results;
-    private List<Double> circleAeras;
+
+    private List<Double> results;
+
     public Calculator() {
         this.results = new ArrayList<>();
-        this.circleAeras = new ArrayList<>();
+
     }
 
-    public int calculate(int num1, int num2, char operator) throws badExceptions {
-        int result;
+    public double calculate(double num1, double num2, char operator) throws badExceptions {
+        double result;
 
         switch (operator) {
             case '+':
@@ -41,11 +42,10 @@ public class Calculator {
 
         for (int i = 0; i < results.size(); i++) {
             System.out.println((i + 1) + " : " + results.get(i));
-
         }
         return result;
     }
-    public List<Integer> getResults() {
+    public List<Double> getResults() {
         return results;
     }
 
@@ -53,7 +53,7 @@ public class Calculator {
     // Math PI = 원주율 / 원주율은 변하지 않는 값이므로 static - final 을 사용하였습니다.
     public double calculateCircleArea(double radius) {
         double area = Math.PI * radius * radius;
-        circleAeras.add(area);
+        results.add(area);
         return area;
     }
 
@@ -67,7 +67,7 @@ public class Calculator {
         } else {
             System.out.println("저장된 기록 확인");
             int index = 1;
-            for (int result : results) {
+            for (double result : results) {
                 System.out.println("[" + index + "] " + result);
             }
         }
