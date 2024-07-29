@@ -22,19 +22,12 @@ public class App {
                 /* equeals = 객체간의 값을 비교 */
                 if (str.equals("history")) {
                     /* 만약에 results에 저장된 값이 없으면 아래 문장 출력*/
-                    List<Integer> results = calc.getResults();
-                    if (results.isEmpty()) {
-                        System.out.println("기록이 없습니다.");
-                        /*기록이 없으면 처음으로 돌아감 */
-                        continue;
+                    if (calc.getResults().isEmpty()) {
+                        calc.inquiryResults();
                     } else {
-                        System.out.println("저장된 기록 확인");
-                        /* 향상된 for문을 사용해서 저장된 기록을 출력*/
-                        int index = 1;
-                        for (int result : results) {
-                            System.out.println("[" + index + "] " + result);
-                        }
+                        calc.inquiryResults();
                     }
+
                 } else if (str.equals("y")) {
                     System.out.println("계산을 시작합니다.");
                 } else {

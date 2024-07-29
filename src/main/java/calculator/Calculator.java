@@ -49,6 +49,18 @@ public class Calculator {
     }
 
 
+    public void inquiryResults() {
+        if (results.isEmpty()) {
+            System.out.println("기록이 없습니다.");
+        } else {
+            System.out.println("저장된 기록 확인");
+            int index = 1;
+            for (int result : results) {
+                System.out.println("[" + index + "] " + result);
+            }
+        }
+    }
+
     public void removeResult() {
         if (!results.isEmpty()) {
             results.remove(0);
