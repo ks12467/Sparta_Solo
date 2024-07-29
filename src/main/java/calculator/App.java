@@ -38,39 +38,35 @@ public class App {
                 } else if (str.equals("y")) {
                     System.out.println("계산을 시작합니다.");
                 } else {
-                    System.out.println("입력 값이 올바르지 않습니다.");
+                    System.out.println("올바른 값이 아닙니다.");
                     continue;
                 }
+
                 System.out.print("첫 번째 숫자를 입력하시오. : ");
                 int num1 = sc.nextInt();
                 System.out.print("두 번째 숫자를 입력하시오. : ");
                 int num2 = sc.nextInt();
-
                 System.out.print("연산 기호를 입력하시오. : ");
                 char operator = sc.next().charAt(0);
 
                 int result = calc.calculate(num1, num2, operator);
-            } catch (badExceptions e) {
-                System.out.println("올바르지 않습니다. ");
-                continue;
+
             } catch (Exception e) {
-                System.out.println("올바르지 없습니다. ");
+                System.out.println("올바르지 않습니다. ");
                 continue;
             }
 
+
+
             System.out.println("계산을 더 하신거나 결과를 삭제하시겠습니까? (y/n/remove)");
             String str = sc.next();
+
             if (str.equals("y")) {
                 System.out.println("계산을 다시 시작합니다.");
             } else if (str.equals("remove")) {
                 List<Integer> results = calc.getResults();
-                /* results의 공간비어있지않을때 가장 첫번째의 값을 삭제*/
-                if (!results.isEmpty()) {
-                    results.remove(0);
-                    System.out.println("가장 오래 된 기록이 삭제되었습니다.");
-                } else {
-                    System.out.println("가장 오래 된 기록이 없습니다.");
-                }
+                calc.removeResult();
+
             } else if (str.equals("n")) {
                 System.out.println("계산을 종료합니다");
                 break;

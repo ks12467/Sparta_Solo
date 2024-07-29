@@ -49,9 +49,12 @@ public class Calculator {
     }
 
 
-    public void removeOldestResult() {
+    public void removeResult() {
         if (!results.isEmpty()) {
             results.remove(0);
+            System.out.println("가장 오래된 기록을 1개 삭제했습니다");
+        } else {
+            System.out.println("기록이 없습니다.");
         }
     }
 
