@@ -1,10 +1,16 @@
 package calculator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Calculator {
-    public int Calculate(int num1, int num2, char operator) throws badExceptions {
-        ArrayList<Integer> results = new ArrayList<>();
+    private List<Integer> results;
+
+    public Calculator() {
+        this.results = new ArrayList<>();
+    }
+
+    public int calculate(int num1, int num2, char operator) throws badExceptions {
         int result;
 
         switch (operator) {
@@ -31,7 +37,23 @@ public class Calculator {
         System.out.println("결과 : " + result);
         results.add(result);
 
+
+        for (int i = 0; i < results.size(); i++) {
+            System.out.println((i + 1) + " : " + results.get(i));
+
+        }
         return result;
     }
-}
+    public List<Integer> getResults() {
+        return results;
+    }
 
+
+    public void removeOldestResult() {
+        if (!results.isEmpty()) {
+            results.remove(0);
+        }
+    }
+
+
+}
