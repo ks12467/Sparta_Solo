@@ -32,7 +32,7 @@ public class App {
                 } else if(str.equals("circle")){
                     System.out.println("원의 넓이를 구합니다. / 원의 반지름을 입력해주새요.");
                     double radius = sc.nextDouble();
-                    double area = calc.calculateCircleArea(radius);
+                    double area = CircleCalculator.calculateCircleArea(radius);
                     System.out.println("원의 넓이 = " + area);
                     continue;
                 }
@@ -52,7 +52,7 @@ public class App {
                 char operator = sc.next().charAt(0);
 
                 //Calculator의 calculate() 메서드를 호출합니다.
-                double result = calc.calculate(num1, num2, operator);
+                double result = ArithmeticCalculator.calculate(num1, num2, operator);
 
                 //예외 클래스 생성하여 오류 발생 시 아래 코드 실행
             } catch (Exception e) {

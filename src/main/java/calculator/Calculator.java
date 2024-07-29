@@ -5,58 +5,27 @@ import java.util.List;
 
 public class Calculator {
 
-    private List<Double> results;
+    private static List<Double> results;
+
+    public static List<Double> getResults() {
+        return results;
+
+    }
 
     public Calculator() {
         this.results = new ArrayList<>();
-
     }
 
-    public double calculate(double num1, double num2, char operator) throws badExceptions {
-        double result;
-
-        switch (operator) {
-            case '+':
-                result = num1 + num2;
-                break;
-            case '-':
-                result = num1 - num2;
-                break;
-            case '*':
-                result = num1 * num2;
-                break;
-            case '/':
-                if (num2 != 0) {
-                    result = num1 / num2;
-                } else {
-                    throw new badExceptions("입력값이 올바르지 않습니다.");
-                }
-                break;
-            default:
-                throw new badExceptions("연산자 입력이 올바르지 않습니다.");
+    public static void printReuslt(double result) {
+        if(results.isEmpty()){
+            System.out.println("기록이 없습니다.");
+        }else {
+            System.out.println("저장된 결과입니다.");
+            for(int i= 0; i<results.size(); i++){
+                System.out.println((i +1) + " 번째 결과 : " + results.get(i));
+            }
         }
-
-        System.out.println("결과 : " + result);
-        results.add(result);
-
-
-        for (int i = 0; i < results.size(); i++) {
-            System.out.println((i + 1) + " : " + results.get(i));
-        }
-        return result;
     }
-    public List<Double> getResults() {
-        return results;
-    }
-
-    private static final double PI = Math.PI;
-    // Math PI = 원주율 / 원주율은 변하지 않는 값이므로 static - final 을 사용하였습니다.
-    public double calculateCircleArea(double radius) {
-        double area = Math.PI * radius * radius;
-        results.add(area);
-        return area;
-    }
-
 
 
 
