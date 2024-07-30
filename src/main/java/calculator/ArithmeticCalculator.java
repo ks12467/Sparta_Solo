@@ -5,12 +5,14 @@ public class ArithmeticCalculator extends Calculator {
     private Operator subtract;
     private Operator multiply;
     private Operator divide;
+    private Operator Mod;
 
     public ArithmeticCalculator() {
         this.add = new AddOperator();
         this.subtract = new SubtractOperator();
         this.multiply = new MultiplyOperator();
         this.divide = new DivideOperator();
+        this.Mod = new ModOperator();
     }
 
     public double calculate(double num1, double num2, char operator) throws badExceptions {
@@ -18,16 +20,19 @@ public class ArithmeticCalculator extends Calculator {
         switch (operator) {
             case '+':
                 result = add.operate(num1, num2);
-            break;
+                break;
             case '-':
                 result = subtract.operate(num1, num2);
-            break;
+                break;
             case '*':
                 result = multiply.operate(num1, num2);
-            break;
+                break;
             case '/':
                 result = divide.operate(num1, num2);
-            break;
+                break;
+            case '%':
+                result = Mod.operate(num1, num2);
+                break;
             default:
                 throw new badExceptions("연산자 입력이 올바르지 않습니다.");
         }
