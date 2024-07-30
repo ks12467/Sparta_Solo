@@ -8,6 +8,4 @@ public class ModOperator implements Operator {
             }
             return num1 % num2;
         }
-
     }
-}

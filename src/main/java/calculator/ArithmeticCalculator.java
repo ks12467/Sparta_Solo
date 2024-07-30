@@ -1,40 +1,25 @@
 package calculator;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public class ArithmeticCalculator extends Calculator {
-    private Operator add;
-    private Operator subtract;
-    private Operator multiply;
-    private Operator divide;
-    private Operator Mod;
-
-    public ArithmeticCalculator() {
-        this.add = new AddOperator();
-        this.subtract = new SubtractOperator();
-        this.multiply = new MultiplyOperator();
-        this.divide = new DivideOperator();
-        this.Mod = new ModOperator();
+    private Map<Character, Operator> operators = new HashMap<>();
+    
+    
+    public ArithmeticCalculator(){
+        operators.put('+', new AddOperator());
+        operators.put('-', new SubtractOperator());
+        operators.put('*', new MultiplyOperator());
+        operators.put('/', new DivideOperator());
+        operators.put('%', new ModOperator());
     }
-
-    public double calculate(double num1, double num2, char operator) throws badExceptions {
-        double result;
-        switch (operator) {
-            case '+':
-                result = add.operate(num1, num2);
-                break;
-            case '-':
-                result = subtract.operate(num1, num2);
-                break;
-            case '*':
-                result = multiply.operate(num1, num2);
-                break;
-            case '/':
-                result = divide.operate(num1, num2);
-                break;
-            case '%':
-                result = Mod.operate(num1, num2);
-                break;
-            default:
-                throw new badExceptions("연산자 입력이 올바르지 않습니다.");
+    
+    public double calculator(double num1, double num2, char operator) throws Exception{
+        Operator op = operators.get(operator);
+        double result = op.operate(num1, num2);
+        if(op == null){
+            throw new badExceptions("입력 값이 올바르지 않습니다");
         }
 
         System.out.println("결과 : " + result);
