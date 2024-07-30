@@ -11,7 +11,8 @@ public class App {
 
         Scanner sc = new Scanner(System.in);
         Calculator calc = new Calculator();
-
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
+        CircleCalculator circleCalculator = new CircleCalculator();
 
         while (true) {
             try {
@@ -52,7 +53,7 @@ public class App {
                 char operator = sc.next().charAt(0);
 
                 //Calculator의 calculate() 메서드를 호출합니다.
-                double result = ArithmeticCalculator.calculate(num1, num2, operator);
+                double result = arithmeticCalculator.calculate(num1, num2, operator);
 
                 //예외 클래스 생성하여 오류 발생 시 아래 코드 실행
             } catch (Exception e) {

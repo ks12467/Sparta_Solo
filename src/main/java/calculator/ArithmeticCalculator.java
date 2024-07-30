@@ -1,28 +1,33 @@
 package calculator;
 
 public class ArithmeticCalculator extends Calculator {
+    private Operator add;
+    private Operator subtract;
+    private Operator multiply;
+    private Operator divide;
 
+    public ArithmeticCalculator() {
+        this.add = new AddOperator();
+        this.subtract = new SubtractOperator();
+        this.multiply = new MultiplyOperator();
+        this.divide = new DivideOperator();
+    }
 
-    public static double calculate(double num1, double num2, char operator) throws badExceptions {
+    public double calculate(double num1, double num2, char operator) throws badExceptions {
         double result;
-
         switch (operator) {
             case '+':
-                result = num1 + num2;
-                break;
+                result = add.operate(num1, num2);
+            break;
             case '-':
-                result = num1 - num2;
-                break;
+                result = subtract.operate(num1, num2);
+            break;
             case '*':
-                result = num1 * num2;
-                break;
+                result = multiply.operate(num1, num2);
+            break;
             case '/':
-                if (num2 != 0) {
-                    result = num1 / num2;
-                } else {
-                    throw new badExceptions("입력값이 올바르지 않습니다.");
-                }
-                break;
+                result = divide.operate(num1, num2);
+            break;
             default:
                 throw new badExceptions("연산자 입력이 올바르지 않습니다.");
         }
